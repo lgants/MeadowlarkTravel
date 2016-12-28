@@ -1,0 +1,22 @@
+{
+  "name": "meadowlark",
+  "version": "1.0.0",
+  "description": "Fictional website from Web Development with Node &amp; Express by Ethan Brown",
+  "main": "meadowlark.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lgants/MeadowlarkTravel.git"
+  },
+  "author": "Logan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lgants/MeadowlarkTravel/issues"
+  },
+  "homepage": "https://github.com/lgants/MeadowlarkTravel#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
