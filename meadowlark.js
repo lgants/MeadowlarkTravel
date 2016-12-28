@@ -1,9 +1,3 @@
-// var fortunes = [
-// "Conquer your fears or they will conquer you.", "Rivers need springs.",
-// "Do not fear what you don't know.",
-// "You will have a pleasant surprise.", "Whenever possible, keep it simple.",
-// ];
-
 var path = require('path');
 var express = require('express');
 var handlebars = require('express3-handlebars');
@@ -22,7 +16,14 @@ app.set('port', process.env.PORT || 3000);
 // static middleware for files to serve client
 app.use(express.static(__dirname + '/public'));
 
-app.get('/', function(req, res) { res.render('home');
+// if test=1 appears in the querystring for any page the property res.locals.showTests will be set to true
+app.use(function(req, res, next) {
+  res.locals.showTests = app.get('env') !== 'production' && req.query.test === '1';
+  next();
+});
+
+app.get('/', function(req, res) {
+  res.render('home');
 });
 
 app.get('/about', function(req, res) {
@@ -30,7 +31,8 @@ app.get('/about', function(req, res) {
 });
 
 // 404 catch-all handler (middleware)
-app.use(function(req, res, next){ res.status(404);
+app.use(function(req, res, next){
+  res.status(404);
   res.render('404');
 });
 
