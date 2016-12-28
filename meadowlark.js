@@ -1,3 +1,9 @@
+var fortunes = [
+"Conquer your fears or they will conquer you.", "Rivers need springs.",
+"Do not fear what you don't know.",
+"You will have a pleasant surprise.", "Whenever possible, keep it simple.",
+];
+
 var path = require('path');
 var express = require('express');
 var handlebars = require('express3-handlebars');
@@ -11,11 +17,15 @@ app.set('view engine', 'handlebars');
 
 app.set('port', process.env.PORT || 3000);
 
+// static middleware for files to serve client
+app.use(express.static(__dirname + '/public'));
+
 app.get('/', function(req, res) { res.render('home');
 });
 
 app.get('/about', function(req, res) {
-  res.render('about');
+  var randomFortune = fortunes[Math.floor(Math.random() * fortunes.length)];
+  res.render('about', {fortune: randomFortune});
 });
 
 // 404 catch-all handler (middleware)
