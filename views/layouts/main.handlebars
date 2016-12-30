@@ -2,6 +2,9 @@
 <html>
   <head>
     <title>Meadowlark Travel</title>
+
+    {{{_sections.head}}}
+
       {{#if showTests}}
         <link rel="stylesheet" href="/vendor/mocha.css">
       {{/if}}
@@ -12,6 +15,9 @@
       <img src="img/logo.png" alt="Meadowlark Travel Logo">
     </header>
     {{{body}}}
+
+    <script src="http://code.jquery.com/jquery-2.0.2.min.js"></script>
+    {{{_sections.jquery}}}
 
     <!-- note that mocha and chai are included as well as a script called /qa/global-tests.js -->
     {{#if showTests}}
@@ -28,6 +34,5 @@
       {{/if}}
         <script>mocha.run();</script>
     {{/if}}
-</body>
   </body>
 </html>

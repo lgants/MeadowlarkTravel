@@ -8,6 +8,7 @@ module.exports = function(grunt){
   ].forEach(function(task){
     grunt.loadNpmTasks(task);
   });
+
   // configure plugins
   grunt.initConfig({
     cafemocha: {
@@ -21,6 +22,7 @@ module.exports = function(grunt){
         { cmd: 'linkchecker http://localhost:3000' }
     },
   });
+  
   // register tasks
   grunt.registerTask('default', ['cafemocha','jshint','exec']);
-};      
+};
