@@ -130,6 +130,10 @@ app.post('/process', function(req, res){
 //   }
 // });
 
+app.get('/newsletter/archive', function(req, res){
+	res.render('newsletter/archive');
+});
+
 app.get('/contest/vacation-photo',function(req,res){
   var now = new Date();
   res.render('contest/vacation-photo',{
