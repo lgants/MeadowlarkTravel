@@ -22,6 +22,7 @@
     "express3-handlebars": "^0.5.2",
     "formidable": "^1.0.17",
     "grunt": "^1.0.1",
+    "jquery-file-upload-middleware": "^0.1.8",
     "pug": "^2.0.0-beta6"
   },
   "devDependencies": {

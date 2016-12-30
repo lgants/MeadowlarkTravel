@@ -3,6 +3,8 @@ var express = require('express');
 var handlebars = require('express3-handlebars');
 var fortune = require('./lib/fortune.js');
 var formidable = require('formidable');
+var jqupload = require('jquery-file-upload-middleware');
+
 var app = express();
 
 // set up handlebars view engine
@@ -96,6 +98,15 @@ app.post('/contest/vacation-photo/:year/:month', function(req, res){
     console.log(files);
     res.redirect(303, '/thank-you');
   });
+});
+
+app.use('/upload', function(req, res, next){ var now = Date.now(); jqupload.fileHandler({
+  uploadDir: function(){
+    return __dirname + '/public/uploads/' + now;
+  },
+  uploadUrl: function(){
+    return '/uploads/' + now; },
+  })(req, res, next);
 });
 
 // 404 catch-all handler (middleware)
