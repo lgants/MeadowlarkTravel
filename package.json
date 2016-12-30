@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/lgants/MeadowlarkTravel#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "express3-handlebars": "^0.5.2",
+    "formidable": "^1.0.17",
     "grunt": "^1.0.1",
     "pug": "^2.0.0-beta6"
   },
