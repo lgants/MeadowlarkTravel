@@ -7,7 +7,17 @@ var app = express();
 
 // set up handlebars view engine
 app.set('views', path.join(__dirname, 'views/layouts/'));
-app.engine('handlebars', handlebars({defaultLayout: 'main'}));
+// helpers adds helper method called section
+app.engine('handlebars', handlebars({
+  defaultLayout: 'main',
+  helpers: {
+    section: function(name, options){
+      if(!this._sections) this._sections = {};
+      this._sections[name] = options.fn(this);
+      return null;
+    }
+  }
+}));
 app.set('view engine', 'handlebars');
 
 
@@ -31,6 +41,18 @@ app.get('/about', function(req, res) {
     fortune: fortune.getFortune(),
     pageTestScript: '/qa/tests-about.js'
   });
+});
+
+app.get('/tours/oregon-coast', function(req, res){
+  res.render('tours/oregon-coast');
+});
+
+app.get('/tours/hood-river', function(req, res){
+  res.render('tours/hood-river');
+});
+
+app.get('/tours/request-group-rate', function(req, res){
+  res.render('tours/request-group-rate');
 });
 
 // 404 catch-all handler (middleware)
